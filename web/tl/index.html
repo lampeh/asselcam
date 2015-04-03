@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Asselcam Time Lapse - Attraktive Asseln in Aktion</title>
+	<meta name="description" content="Woodlouse and pill bug time lapse movies">
+	<meta name="keywords" content="Isopoda,Kellerasseln,Porcellio scaber,Rollasseln,Armadillidium vulgare,Mauerasseln,Oniscus asellus,Isopodenporno,Asseln,Webcam,Zeitraffer,Time lapse">
+
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://asseln.attraktor.org/tl/videos.xml">
+	<link rel="shortcut icon" href="/favicon.png">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/js/video-js/video-js.min.css" rel="stylesheet">
+
+	<style>
+		.player { max-width: 1280px; }
+		.playlist { max-height: 670px; overflow: auto; }
+		.video-js { padding-top: 56.25%; }
+		.vjs-fullscreen { padding-top: 0px; }
+	</style>
+</head>
+<body>
+<div class="container-fluid">
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="//asseln.attraktor.org/">Asselcam</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="http://hls.asseln.attraktor.org/h264-hls.m3u8">Live Feed</a></li>
+				<li class="active"><a href="/tl/">Time Lapse</a></li>
+				<li><a href="/tl/videos.xml">Podcast</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="row">
+		<div class="col-md-2">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header nav-stacked">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#playlist">
+						<span class="sr-only">Toggle playlist</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand">Playlist</div>
+				</div>
+				<div class="clearfix"></div>
+				<div id="listbox" class="playlist">
+					<div id="playlist" class="navbar-collapse collapse"></div>
+				</div>
+			</nav>
+		</div>
+		<div class="col-md-10">
+			<div class="player text-center">
+				<div id="player">
+					<p class="vjs-no-js">The player didn't load yet.
+						Download the <a href="http://videos.asseln.attraktor.org/">video files here</a>.
+				</div>
+				<div class="text-left small">
+					<a href="#" id="link_href" aria-label="Permalink" rel="nofollow"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a><span id="link_text"></span>
+				</div>
+				<button type="button" class="btn btn-default" data-action="first">
+					<span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+					<span class="sr-only">First</span>
+				</button>
+				<button type="button" class="btn btn-default" data-action="prev">
+					<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</button>
+				<button type="button" class="btn btn-default" data-action="next">
+					<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</button>
+				<button type="button" class="btn btn-default" data-action="last">
+					<span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+					<span class="sr-only">Last</span>
+				</button>
+			</div>
+<!--
+			<div id="socialshareprivacy"></div>
+-->
+		</div>
+	</div>
+</div>
+
+<script src="/js/common.min.js"></script>
+<script src="/js/video-js/video.js"></script>
+<script src="/js/videojs-playlists.min.js"></script>
+<script>
+"use strict";
+jQuery(function($) {
+
+	var videotag = ($("<video/>")
+		.attr({
+			"width": "auto", "height": "auto",
+			"poster": "/img/bottich_poster.jpg",
+			"preload": "metadata",
+			"controls": ""
+		})
+		.addClass("video-js vjs-default-skin vjs-big-play-centered")
+	)[0];
+
+	$("#player").html(videotag);
+
+	videojs(
+		videotag,
+		{"controlBar": {"volumeControl": false, "muteToggle": false}, "playbackRates": [0.25, 0.5, 0.75, 1.0, 1.5, 2]},
+		function() {
+			var player = this;
+			var link_href = $("#link_href")[0];
+			var link_text = $("#link_text")[0];
+
+			var lastvid = -1;
+			var current = 0;
+
+			function reloadPlaylist(selectedVideo) {
+				$.getJSON("/tl/videos.json", function(videos) {
+					if (!videos.length) {
+						return;
+					}
+
+					var playlist = $("<ul/>").addClass("nav nav-pills nav-stacked");
+
+					$.each(videos, function(idx, video) {
+						playlist.append($("<li/>")
+							.html($("<a/>")
+								.text(video.title)
+								.attr("href", video.src[0]))
+							.attr({
+								"id": "video-" + idx,
+								"data-video-selector": video.title
+							})
+						);
+					});
+
+					$("#playlist").empty();
+					lastvid = -1;
+
+					player.playList(videos);
+
+					lastvid = videos.length-1;
+					$("#playlist").html(playlist);
+
+					var selected = lastvid;
+					if (selectedVideo) {
+						var selector = $("[data-video-selector='" + CSS.escape(selectedVideo) + "']");
+						if (selector.length) {
+							selected = selector.index();
+						}
+					}
+
+					var seek = 0;
+					var seek_m = location.hash.replace(/^#t=([0-9]*)m.*/, "$1");
+					var seek_s = location.hash.replace(/^#t=([0-9]*m)?([0-9.]*)s.*/, "$2");
+
+					if ($.isNumeric(seek_m)) {
+						seek = seek + (seek_m * 60)
+					}
+
+					if ($.isNumeric(seek_s)) {
+						seek = seek + (seek_s * 1)
+					}
+
+					if (seek) {
+						player.one("loadedmetadata", function() {
+							// check if the selected video is actually playing
+							// if playList() fails to open the selected file,
+							// the event could trigger on the wrong video
+							if (selected === player.pl.current) {
+								player.currentTime(seek);
+								player.play();
+							}
+						});
+					}
+
+					player.playList(selected);
+					updateActive();
+
+					// TODO: quickfix - think again. what could possibly go wrong?
+					if ($.isNumeric(qs["rate"])) {
+						player.playbackRate(qs["rate"]);
+					}
+				});
+			}
+
+			function updateActive() {
+				$("#video-" + current).removeClass("active");
+
+				current = player.pl.current;
+
+				var scrollTarget = $("#video-" + current).addClass("active");
+				var offset = scrollTarget.position().top - $("#playlist").position().top
+								- ($("#listbox").height() / 2) + (scrollTarget.height() / 2);
+
+				$("#listbox").animate({scrollTop: offset}, 200);
+
+				link_href.href = getCurrentURI();
+				link_text.innerHTML = getCurrentURI();
+			}
+
+			function getCurrentURI() {
+				var video = $("#video-" + current);
+				var rate = player.playbackRate();
+				var time = player.currentTime();
+
+				return(document.location.origin + document.location.pathname +
+					((video.length) ? ("?v=" + video.data("video-selector")) : ("")) +
+					((rate != 1) ? ("&rate=" + rate) : ("")) +
+					((time) ? ("#t=" + Math.floor(time / 60) + "m" + Math.floor(time % 60) + "s") : (""))
+				);
+			}
+
+			player.on("next", updateActive);
+			player.on("prev", updateActive);
+
+			// TODO: optimize?
+			// link content depends on current, player.playbackRate(), player.currentTime()
+//			player.on("timeupdate", function() { link.innerHTML = getCurrentURI(); });
+//			player.setInterval(function() { link.innerHTML = getCurrentURI(); }, 500);
+			player.setInterval(function() {
+				link_href.href = getCurrentURI();
+				link_text.innerHTML = getCurrentURI();
+			}, 500);
+
+			$("[data-action=next]").on("click", function() {
+				player.next();
+			});
+
+			$("[data-action=prev]").on("click", function() {
+				player.prev();
+			});
+
+			$("[data-action=first]").on("click", function() {
+				player.playList(0);
+				updateActive();
+			});
+
+			$("[data-action=last]").on("click", function() {
+				if (lastvid >= 0) {
+					player.playList(lastvid);
+					updateActive();
+				}
+			});
+
+			$("#playlist").on("click", "li", function(e) {
+				e.preventDefault();
+				player.playList($(this).index());
+				updateActive();
+			});
+
+			// query string to array
+			// http://stackoverflow.com/questions/901115#3855394
+			var qs = (function(a) {
+				if (a == "") return {};
+				var b = {};
+				for (var i = 0; i < a.length; ++i) {
+					var p = a[i].split('=', 2);
+					if (p.length == 1)
+						b[p[0]] = "";
+					else
+						b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+				}
+				return b;
+			})(window.location.search.substr(1).split('&'));
+
+			reloadPlaylist(("" + qs["v"]).replace(/[^0-9-]*/g, ""));
+
+			if ($("#socialshareprivacy").length){
+				$("#socialshareprivacy").socialSharePrivacy({
+					"uri": getCurrentURI,
+					"css_path": "/socialshareprivacy/socialshareprivacy.css",
+					"lang_path": "/socialshareprivacy/lang/",
+//					"alignment": "vertical",
+					"services": {
+						"facebook": {
+							"perma_option": "off",
+							"dummy_img": "/socialshareprivacy/images/dummy_facebook.png",
+							"sharer": {
+								"status": "on",
+								"dummy_img": "/socialshareprivacy/images/dummy_facebook_share_de.png",
+								"img": "/socialshareprivacy/images/facebook_share_de.png"
+							}
+						},
+						"twitter": {
+							"perma_option": "off",
+							"dummy_img": "/socialshareprivacy/images/dummy_twitter.png"
+						},
+						"gplus": {
+							"perma_option": "off",
+							"dummy_img": "/socialshareprivacy/images/dummy_gplus.png"
+						}
+					}
+				});
+			}
+		}
+	);
+});
+</script>
+</body>
+</html>
