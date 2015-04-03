@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 				},
 				separator: ';\n'
 			},
+
 			common: {
 				nonull: true,
 				src: [
@@ -20,16 +21,30 @@ module.exports = function(grunt) {
 				],
 				dest: '../web/js/common.js'
 			},
+
 			video: {
+				nonull: true,
+				src: [
+					'../web/js/video-js/video.js',
+					'../web/js/videojs-playlists.js'
+				],
+				dest: '../web/js/video.js'
 			}
 		},
 
 		uglify: {
 			options: {
 			},
+
 			common: {
 				files: {
 					'../web/js/common.min.js': ['../web/js/common.js']
+				}
+			},
+
+			video: {
+				files: {
+					'../web/js/video.min.js': ['../web/js/video.js']
 				}
 			}
 		},
@@ -42,6 +57,7 @@ module.exports = function(grunt) {
 					(require('imagemin-zopfli'))({ more: true })
 				]
 			},
+
 			common: {
 				files: [{
 					expand: true,
