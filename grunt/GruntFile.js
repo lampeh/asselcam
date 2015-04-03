@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 			video: {
 				nonull: true,
 				src: [
-					'../web/js/video-js/video.js',
+//					'../web/js/video-js/video.js',
 					'../web/js/videojs-playlists.js'
 				],
 				dest: '../web/js/video.js'
