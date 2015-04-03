@@ -1,0 +1,19 @@
+new channel1 broadcast enabled loop
+setup channel1 input udp://@192.168.63.1:1234
+setup channel1 option input-repeat=-1
+setup channel1 option udp-caching=5000
+setup channel1 output #mosaic-bridge{id=1,width=1280,height=720},select=video
+
+
+new mosaic broadcast enabled loop
+setup mosaic input file:///home/vrelay/asseln/no_signal_720.png
+setup mosaic option image-duration=-1
+setup mosaic option image-fps=25/1
+setup mosaic option image-realtime
+setup mosaic option input-repeat=-1
+setup mosaic option sout-keep
+setup mosaic option no-sout-audio
+setup mosaic output #transcode{sfilter=mosaic{alpha=255,position=2,order=1,offsets='0,0',width=1280,height=720,keep-picture},width=1280,height=720,fps=25,threads=8,vcodec=h264,vb=0,venc=x264{preset=slow,keyint=125,crf=1,qpmin=0,qpmax=51,qpstep=51,vbv-maxrate=2300,vbv-bufsize=3000,fullrange,me=dia,subme=10,direct=auto,aq-mode=2,aq-strength=0.1,non-deterministic}}:gather:duplicate{dst=std{access=http{mime='video/mp2t'},mux=ts{use-key-frames},dst=0.0.0.0:8080},dst=std{access=livehttp{seglen=5,delsegs=true,numsegs=20,index=/var/www/asseln/hls/h264-hls.m3u8,index-url=http://hls.asseln.attraktor.org/h264-########.ts},mux=ts{use-key-frames},dst=/var/www/asseln/hls/h264-########.ts}}
+
+control channel1 play
+control mosaic play

@@ -1,0 +1,6 @@
+# m h  dom mon dow   command
+## clock timer switches the sun on from 7:20 to 0:15
+## auto exposure
+15 7  * * *  v4l2-ctl -c exposure_auto=3
+## increase exposure time to max at night
+20 0  * * *  { v4l2-ctl -c exposure_auto=1; sleep 0.5; v4l2-ctl -c exposure_absolute=2047; }

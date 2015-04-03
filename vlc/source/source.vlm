@@ -1,0 +1,25 @@
+new camera broadcast enabled loop
+setup camera input v4l2:///dev/video0:width=1280:height=720:fps=10:set-ctrls{focus_auto=0,focus_absolute=70}
+setup camera option input-repeat=-1
+setup camera option sout-keep
+setup camera option no-sout-audio
+##
+## vbv-options control the average and peak bitrates
+## intra-refresh disables some options but helps with keyframe bursts > uplink buffer capacity. try no-intra-refresh
+## low aq-strength -> less bits to the boring flat parts
+## subme=9 is good for low bitrate, subme=10 probably has not much effect
+## me=umh probably has not much effect
+## partitions=all probably has not much effect (small flies?) try =slow or =normal
+##
+## adjust brightness and contrast for motion detection in low light
+##
+## vlc gets oom-killed with only a single output. http output added -> works. weird.
+## transcode-vfilter and sfilter don't work together -> vlc crashes with Floating Point Exception
+##
+## not sure about ts mux options. caching and shaping used to help with slow uplinks.
+##
+setup camera output #transcode{vfilter="scene{ratio=5,format=png,replace,prefix=asseln-latest,path=/run/shm}:adjust{brightness=1.0,contrast=1.0}:motion",width=1280,height=720,fps=25,threads=4,vcodec=h264,vb=0,venc=x264{intra-refresh,keyint=250,scenecut=-1,crf=1,qpmin=0,qpmax=51,qpstep=51,vbv-maxrate=2300,vbv-bufsize=2600,opengop,ref=3,bframes=16,b-bias=50,b-adapt=1,bpyramid=normal,fullrange,partitions=all,subme=10,direct=auto,trellis=2,aq-mode=2,aq-strength=0.1,non-deterministic}}:gather:duplicate{dst=std{access=http,mux=ts{shaping=160,use-key-frames},dst=0.0.0.0:8080},dst=std{access=udp{caching=3000},mux=ts{no-alignment,shaping=80,use-key-frames},dst=192.168.63.1:1234}}
+#adjust{brightness=1.33,contrast=1.7}:
+#sfilter="marq{marquee=%H:%M:%S,size=20,x=1105,y=658,refresh=500}:marq{marquee=%d.%m.%Y,size=16,x=1105,y=678,refresh=500}:logo{file=attraktor_logo.png,x=1030,y=25,opacity=255}"
+
+control camera play
