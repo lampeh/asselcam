@@ -1,3 +1,5 @@
+'use strict';
+// Source: ../web/js/css.escape.js
 /*! http://mths.be/cssescape v0.2.1 by @mathias | MIT license */
 ;(function(root) {
 
@@ -82,6 +84,8 @@
 	}
 
 }(typeof global != 'undefined' ? global : this));
+;
+// Source: ../web/js/jquery.js
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -9287,6 +9291,8 @@ if ( typeof noGlobal === strundefined ) {
 return jQuery;
 
 }));
+;
+// Source: ../web/js/jquery.socialshareprivacy.js
 /*!
  * jquery.socialshareprivacy.js | 2 Klicks fuer mehr Datenschutz (1.6)
  *
@@ -9302,9 +9308,7 @@ return jQuery;
  */
 (function ($) {
 
-    "use strict";
-
-    //
+//
     // helper functions
     // 
 
@@ -9730,6 +9734,8 @@ return jQuery;
         }); // this.each(function ()
     }; // $.fn.socialSharePrivacy = function (settings) {
 }(jQuery));
+;
+// Source: ../web/bootstrap/js/bootstrap.js
 /*!
  * Bootstrap v3.3.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -9757,9 +9763,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+// CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
   // ============================================================
 
   function transitionEnd() {
@@ -9817,9 +9821,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // ALERT CLASS DEFINITION
+// ALERT CLASS DEFINITION
   // ======================
 
   var dismiss = '[data-dismiss="alert"]'
@@ -9912,9 +9914,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // BUTTON PUBLIC CLASS DEFINITION
+// BUTTON PUBLIC CLASS DEFINITION
   // ==============================
 
   var Button = function (element, options) {
@@ -10029,9 +10029,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // CAROUSEL CLASS DEFINITION
+// CAROUSEL CLASS DEFINITION
   // =========================
 
   var Carousel = function (element, options) {
@@ -10270,9 +10268,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // COLLAPSE PUBLIC CLASS DEFINITION
+// COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
 
   var Collapse = function (element, options) {
@@ -10482,9 +10478,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // DROPDOWN CLASS DEFINITION
+// DROPDOWN CLASS DEFINITION
   // =========================
 
   var backdrop = '.dropdown-backdrop'
@@ -10644,9 +10638,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // MODAL CLASS DEFINITION
+// MODAL CLASS DEFINITION
   // ======================
 
   var Modal = function (element, options) {
@@ -10970,9 +10962,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // TOOLTIP PUBLIC CLASS DEFINITION
+// TOOLTIP PUBLIC CLASS DEFINITION
   // ===============================
 
   var Tooltip = function (element, options) {
@@ -11448,9 +11438,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // POPOVER PUBLIC CLASS DEFINITION
+// POPOVER PUBLIC CLASS DEFINITION
   // ===============================
 
   var Popover = function (element, options) {
@@ -11568,9 +11556,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // SCROLLSPY CLASS DEFINITION
+// SCROLLSPY CLASS DEFINITION
   // ==========================
 
   function ScrollSpy(element, options) {
@@ -11744,9 +11730,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // TAB CLASS DEFINITION
+// TAB CLASS DEFINITION
   // ====================
 
   var Tab = function (element) {
@@ -11898,9 +11882,7 @@ if (typeof jQuery === 'undefined') {
 
 
 +function ($) {
-  'use strict';
-
-  // AFFIX CLASS DEFINITION
+// AFFIX CLASS DEFINITION
   // ======================
 
   var Affix = function (element, options) {
