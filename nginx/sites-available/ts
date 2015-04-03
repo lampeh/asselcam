@@ -1,0 +1,14 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name ts.asseln.attraktor.org;
+
+	root /var/www/empty;
+
+	access_log /var/log/nginx/ts-access.log combined buffer=4k flush=1s;
+
+	location = / {
+		proxy_pass http://127.0.0.1:8080/;
+	}
+}

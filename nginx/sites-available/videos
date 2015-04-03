@@ -1,0 +1,19 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name videos.asseln.attraktor.org;
+	server_name videos-origin.asseln.attraktor.org;
+
+	root /var/www/asseln/tl/videos;
+
+	autoindex on;
+
+	access_log /var/log/nginx/videos-access.log combined buffer=4k flush=1s;
+
+	location ~ \.mp4$ {
+		expires +1w;
+	}
+
+	rewrite ^/robots\.txt$ /.robots.txt;
+}

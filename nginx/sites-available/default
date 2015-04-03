@@ -1,0 +1,52 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server ipv6only=on;
+
+	listen 443 default_server ssl spdy fastopen=3;
+	listen [::]:443 default_server ssl spdy fastopen=3;
+
+	server_name asseln.attraktor.org;
+
+	ssl_certificate /etc/nginx/ssl/asseln.attraktor.org-combined.crt;
+	ssl_certificate_key /etc/nginx/ssl/asseln.attraktor.org.key;
+	ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+#	ssl_ciphers "ECDH:DH:!aNULL:!eNULL:!EXPORT:!LOW:!MEDIUM:!SSLv2:!DSS:!3DES";
+	ssl_prefer_server_ciphers on;
+	ssl_session_cache shared:SSL:8m;
+	ssl_session_timeout 15m;
+
+	ssl_stapling on;
+	ssl_stapling_verify on;
+
+	add_header Alternate-Protocol 443:npn-spdy/3;
+
+	root /var/www/asseln;
+
+	index index.html;
+
+#	rewrite "^/tl/([0-9]{4})/([0-9]{2})/([0-9]{2})/?$" "/tl/?v=$1-$2-$3" redirect;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+		expires +1h;
+	}
+
+	location /src/ {
+		autoindex on;
+		default_type text/plain;
+		expires +1h;
+	}
+
+	location ~ \.(js|css|woff)$ {
+		expires +1d;
+	}
+
+	## redirect legacy URLs. may be removed
+	rewrite ^/tl/videos/(.*)$ $scheme://videos.asseln.attraktor.org/$1 redirect;
+	rewrite ^/hls/(.*)$ $scheme://hls.asseln.attraktor.org/$1 redirect;
+	rewrite ^/tl/(2015-01-05|video)\.html$ $scheme://$server_name/tl/ redirect;
+}

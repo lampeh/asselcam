@@ -1,0 +1,23 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name hls.asseln.attraktor.org;
+	server_name hls-origin.asseln.attraktor.org;
+
+	root /var/www/asseln/hls;
+
+	index h264-hls.m3u8;
+
+	access_log /var/log/nginx/hls-access.log combined buffer=4k flush=1s;
+
+	location ~ \.m3u8$ {
+		expires modified +4s;
+	}
+
+	location ~ \.ts$ {
+		expires +300s;
+	}
+
+	include /etc/nginx/cors.conf;
+}
