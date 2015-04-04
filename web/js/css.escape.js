@@ -1,5 +1,5 @@
 /*! https://mths.be/cssescape v0.2.1 by @mathias | MIT license */
-;(function(root) {
+(function(root) {
 
 	if (!root.CSS) {
 		root.CSS = {};
