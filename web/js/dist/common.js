@@ -12037,7 +12037,7 @@ if (typeof jQuery === 'undefined') {
 jQuery(function($) {
 	if($("#socialshareprivacy").length > 0){
 		$("#socialshareprivacy").socialSharePrivacy({
-			"css_path": "/socialshareprivacy/socialshareprivacy.css",
+			"css_path": "/socialshareprivacy/socialshareprivacy.min.css",
 			"lang_path": "/socialshareprivacy/lang/",
 			"services": {
 				"facebook": {

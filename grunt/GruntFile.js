@@ -68,6 +68,7 @@ module.exports = function(grunt) {
 					expand: true,
 					src: [
 						'../web/bootstrap/css/bootstrap.css',
+						'../web/socialshareprivacy/socialshareprivacy.css',
 					],
 					ext: '.min.css',
 					extDot: 'last'
