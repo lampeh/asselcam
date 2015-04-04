@@ -60,6 +60,19 @@ module.exports = function(grunt) {
 					src: ['../web/**/*.{png,jpg,gif}']
 				}]
 			}
+		},
+
+		cssmin: {
+			all: {
+				files: [{
+					expand: true,
+					src: [
+						'../web/bootstrap/css/bootstrap.css',
+					],
+					ext: '.min.css',
+					extDot: 'last'
+				}]
+			}
 		}
 	});
 
@@ -68,6 +81,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask('default', ['gitinfo', 'concat', 'newer:uglify', 'newer:imagemin']);
+	grunt.registerTask('default', ['gitinfo', 'concat', 'newer:uglify', 'newer:imagemin', 'newer:cssmin']);
 }
