@@ -1,102 +1,102 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Asselcam - Attraktor e.V.</title>
-		<meta name="description" content="Live woodlouse and pill bug camera stream">
-		<meta name="keywords" content="Isopoda,Kellerasseln,Porcellio scaber,Rollasseln,Armadillidium vulgare,Mauerasseln,Oniscus asellus,Isopodenporno,Asseln,Webcam,Live stream">
+<head>
+	<title>Asselcam - Attraktor e.V.</title>
+	<meta name="description" content="Live woodlouse and pill bug camera stream">
+	<meta name="keywords" content="Isopoda,Kellerasseln,Porcellio scaber,Rollasseln,Armadillidium vulgare,Mauerasseln,Oniscus asellus,Isopodenporno,Asseln,Webcam,Live stream">
 
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://asseln.attraktor.org/tl/videos.xml">
-		<link rel="shortcut icon" href="/favicon.png">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://asseln.attraktor.org/tl/videos.xml">
+	<link rel="shortcut icon" href="/favicon.png">
 
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class="container-fluid">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="//asseln.attraktor.org/">Asselcam</a>
-				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="/">Home</a></li>
-						<li><a href="http://hls.asseln.attraktor.org/h264-hls.m3u8">Live Feed</a></li>
-						<li><a href="/tl/">Time Lapse</a></li>
-						<li><a href="/tl/videos.xml">Podcast</a></li>
-					</ul>
-				</div>
-			</nav>
-			<div class="row">
-				<div class="col-md-2">
-				</div>
-				<div class="col-md-10">
-					<h1>Lorem ipsum isopodum wissenschon</h1>
-					<a href="img/bottich.jpg"><img src="img/bottich_klein.jpg" alt="Asselbottich"></a><br>
-
-					<p>Ein Bottich mit Bambusbusch und {Keller,Roll,Mauer}asseln im <a href="http://attraktor.org/">Attraktor Makerspace</a>. TODO: Flashige Website.</p>
-
-					<h2>Hier gehts zum Video</h2>
-					<a href="http://hls.asseln.attraktor.org/h264-hls.m3u8">Asselcam H264-HLS</a> - Android, iPhone, VLC<br>
-					<a href="h264-ts.m3u">Asselcam H264-TS</a> - falls HLS nicht funktioniert<br>
-<!-- 					<a href="http://192.168.0.198/h264-hls.m3u8">Asselcam intern</a><br> -->
-
-					<h2>Was bisher geschah</h2>
-					<a href="tl/">Ein ganz normaler Tag</a>
-
-					<h2>Share!</h2>
-					<div id="socialshareprivacy"></div>
-
-					<h2>See also</h2>
-					<a href="http://en.wikipedia.org/wiki/Woodlouse">Woodlouse</a><br>
-					<a href="http://de.wikipedia.org/wiki/Asseln">Asseln</a><br>
-
-					<h2>Damit ich nicht vergesse, wie das funktioniert</h2>
-<!-- 					<a href="src/">src/</a><br> -->
-					<a href="https://github.com/lampeh/asselcam">src/</a><br>
-					TODO: auf gstreamer umbauen? endlich wieder Uhrzeit und Logo. vielleicht auch ein MP4-Stream für HTML5-Video
-				</div>
-			</div>
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="//asseln.attraktor.org/">Asselcam</a>
 		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="http://hls.asseln.attraktor.org/h264-hls.m3u8">Live Feed</a></li>
+				<li><a href="/tl/">Time Lapse</a></li>
+				<li><a href="/tl/videos.xml">Podcast</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-10">
+			<h1>Lorem ipsum isopodum wissenschon</h1>
+			<a href="img/bottich.jpg"><img src="img/bottich_klein.jpg" alt="Asselbottich"></a><br>
 
-		<script src="/js/dist/common.min.js"></script>
-		<script>
-		"use strict";
-		jQuery(function($) {
-			if($("#socialshareprivacy").length > 0){
-				$("#socialshareprivacy").socialSharePrivacy({
-					"css_path": "/socialshareprivacy/socialshareprivacy.css",
-					"lang_path": "/socialshareprivacy/lang/",
-					"services": {
-						"facebook": {
-							"perma_option": "off",
-							"dummy_img": "/socialshareprivacy/images/dummy_facebook.png",
-							"sharer": {
-								"status": "on",
-								"dummy_img": "/socialshareprivacy/images/dummy_facebook_share_de.png",
-								"img": "/socialshareprivacy/images/facebook_share_de.png"
-							}
-						},
-						"twitter": {
-							"perma_option": "off",
-							"dummy_img": "/socialshareprivacy/images/dummy_twitter.png"
-						},
-						"gplus": {
-							"perma_option": "off",
-							"dummy_img": "/socialshareprivacy/images/dummy_gplus.png"
-						}
+			<p>Ein Bottich mit Bambusbusch und {Keller,Roll,Mauer}asseln im <a href="http://attraktor.org/">Attraktor Makerspace</a>. TODO: Flashige Website.</p>
+
+			<h2>Hier gehts zum Video</h2>
+			<a href="http://hls.asseln.attraktor.org/h264-hls.m3u8">Asselcam H264-HLS</a> - Android, iPhone, VLC<br>
+			<a href="h264-ts.m3u">Asselcam H264-TS</a> - falls HLS nicht funktioniert<br>
+<!-- 			<a href="http://192.168.0.198/h264-hls.m3u8">Asselcam intern</a><br> -->
+
+			<h2>Was bisher geschah</h2>
+			<a href="tl/">Ein ganz normaler Tag</a>
+
+			<h2>Share!</h2>
+			<div id="socialshareprivacy"></div>
+
+			<h2>See also</h2>
+			<a href="http://en.wikipedia.org/wiki/Woodlouse">Woodlouse</a><br>
+			<a href="http://de.wikipedia.org/wiki/Asseln">Asseln</a><br>
+
+			<h2>Damit ich nicht vergesse, wie das funktioniert</h2>
+<!-- 			<a href="src/">src/</a><br> -->
+			<a href="https://github.com/lampeh/asselcam">src/</a><br>
+			TODO: auf gstreamer umbauen? endlich wieder Uhrzeit und Logo. vielleicht auch ein MP4-Stream für HTML5-Video
+		</div>
+	</div>
+</div>
+
+<script src="/js/dist/common.min.js"></script>
+<script>
+"use strict";
+jQuery(function($) {
+	if($("#socialshareprivacy").length > 0){
+		$("#socialshareprivacy").socialSharePrivacy({
+			"css_path": "/socialshareprivacy/socialshareprivacy.css",
+			"lang_path": "/socialshareprivacy/lang/",
+			"services": {
+				"facebook": {
+					"perma_option": "off",
+					"dummy_img": "/socialshareprivacy/images/dummy_facebook.png",
+					"sharer": {
+						"status": "on",
+						"dummy_img": "/socialshareprivacy/images/dummy_facebook_share_de.png",
+						"img": "/socialshareprivacy/images/facebook_share_de.png"
 					}
-				});
+				},
+				"twitter": {
+					"perma_option": "off",
+					"dummy_img": "/socialshareprivacy/images/dummy_twitter.png"
+				},
+					"gplus": {
+					"perma_option": "off",
+					"dummy_img": "/socialshareprivacy/images/dummy_gplus.png"
+				}
 			}
 		});
-		</script>
-	</body>
+	}
+});
+</script>
+</body>
 </html>
