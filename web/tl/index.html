@@ -124,7 +124,7 @@ jQuery(function($) {
 			var link_text = $("#link_text")[0];
 
 			var lastvid = -1;
-			var current = 0;
+			var current = $();
 
 			function reloadPlaylist(selectedVideo) {
 				$.getJSON("/tl/videos.json", function(videos) {
@@ -199,18 +199,14 @@ jQuery(function($) {
 			}
 
 			function updateActive() {
-				$("#video-" + current).removeClass("active");
+				current.removeClass("active");
+				current = $("#video-" + player.pl.current).addClass("active");
 
-				current = player.pl.current;
+				download_href.href = current.data("video-src");
+				link_href.href = link_text.innerHTML = getURI(current);
 
-				var scrollTarget = $("#video-" + current).addClass("active");
-
-				download_href.href = scrollTarget.data("video-src");
-				link_href.href = getURI(scrollTarget);
-				link_text.innerHTML = getURI(scrollTarget);
-
-				var offset = scrollTarget.position().top - $("#playlist").position().top
-								- ($("#listbox").height() / 2) + (scrollTarget.height() / 2);
+				var offset = current.position().top - $("#playlist").position().top
+								- ($("#listbox").height() / 2) + (current.height() / 2);
 				$("#listbox").animate({scrollTop: offset}, 200);
 			}
 
@@ -226,7 +222,7 @@ jQuery(function($) {
 			}
 
 			function getCurrentURI() {
-				return getURI($("#video-" + current));
+				return getURI(current);
 			}
 
 			player.on("next", updateActive);
@@ -235,11 +231,7 @@ jQuery(function($) {
 			// TODO: optimize?
 			// link content depends on current, player.playbackRate(), player.currentTime()
 //			player.on("timeupdate", function() { link.innerHTML = getCurrentURI(); });
-			player.setInterval(function() {
-				var video = $("#video-" + current);
-				link_href.href = getURI(video);
-				link_text.innerHTML = getURI(video);
-			}, 500);
+			player.setInterval(function() { link_href.href = link_text.innerHTML = getURI(current) }, 500);
 
 			$("[data-action=next]").on("click", function() {
 				player.next();
