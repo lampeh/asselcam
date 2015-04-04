@@ -119,9 +119,26 @@ jQuery(function($) {
 		{"controlBar": {"volumeControl": false, "muteToggle": false}, "playbackRates": [0.25, 0.5, 0.75, 1.0, 1.5, 2]},
 		function() {
 			var player = this;
-			var download_href = $("#download_href")[0];
+
+			// query string to array
+			// http://stackoverflow.com/questions/901115#3855394
+			var qs = (function(a) {
+				if (a == "") return {};
+				var b = {};
+				for (var i = 0; i < a.length; ++i) {
+					var p = a[i].split('=', 2);
+					if (p.length == 1)
+						b[p[0]] = "";
+					else
+						b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+				}
+				return b;
+			})(window.location.search.substr(1).split('&'));
+
+			// keep references used in update loop
 			var link_href = $("#link_href")[0];
 			var link_text = $("#link_text")[0];
+			var download_href = $("#download_href")[0];
 
 			var lastvid = -1;
 			var current = $();
@@ -138,7 +155,6 @@ jQuery(function($) {
 						playlist.append($("<li/>")
 							.html($("<a/>")
 								.text(video.title)
-//								.attr("href", video.src[0]))
 								.attr("href", document.location.origin + document.location.pathname + "?v=" + video.title))
 							.attr({
 								"id": "video-" + idx,
@@ -169,11 +185,11 @@ jQuery(function($) {
 					var seek_s = location.hash.replace(/^#t=([0-9]*m)?([0-9.]*)s.*/, "$2");
 
 					if ($.isNumeric(seek_m)) {
-						seek = seek + (seek_m * 60)
+						seek += seek_m * 60
 					}
 
 					if ($.isNumeric(seek_s)) {
-						seek = seek + (seek_s * 1)
+						seek += seek_s * 1
 					}
 
 					if (seek) {
@@ -221,16 +237,12 @@ jQuery(function($) {
 				);
 			}
 
-			function getCurrentURI() {
-				return getURI(current);
-			}
-
 			player.on("next", updateActive);
 			player.on("prev", updateActive);
 
 			// TODO: optimize?
 			// link content depends on current, player.playbackRate(), player.currentTime()
-//			player.on("timeupdate", function() { link.innerHTML = getCurrentURI(); });
+//			player.on("timeupdate", function() { link_href.href = link_text.innerHTML = getURI(current) });
 			player.setInterval(function() { link_href.href = link_text.innerHTML = getURI(current) }, 500);
 
 			$("[data-action=next]").on("click", function() {
@@ -258,21 +270,6 @@ jQuery(function($) {
 				player.playList($(this).index());
 				updateActive();
 			});
-
-			// query string to array
-			// http://stackoverflow.com/questions/901115#3855394
-			var qs = (function(a) {
-				if (a == "") return {};
-				var b = {};
-				for (var i = 0; i < a.length; ++i) {
-					var p = a[i].split('=', 2);
-					if (p.length == 1)
-						b[p[0]] = "";
-					else
-						b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
-				}
-				return b;
-			})(window.location.search.substr(1).split('&'));
 
 			reloadPlaylist(("" + qs["v"]).replace(/[^0-9-]*/g, ""));
 		}
