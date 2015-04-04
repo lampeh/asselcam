@@ -9735,7 +9735,7 @@ return jQuery;
     }; // $.fn.socialSharePrivacy = function (settings) {
 }(jQuery));
 ;
-// Source: ../web/bootstrap/js/bootstrap.js
+// Source: ../web/js/bootstrap.js
 /*!
  * Bootstrap v3.3.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.

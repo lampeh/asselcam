@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 						'../web/js/css.escape.js',
 						'../web/js/jquery/jquery.js',
 						'../web/js/jquery/jquery.socialshareprivacy.js',
-						'../web/bootstrap/js/bootstrap.js',
+						'../web/js/bootstrap.js',
 						'../web/js/socialshareprivacy.js'
 					],
 
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					src: [
-						'../web/bootstrap/css/bootstrap.css',
+						'../web/css/bootstrap.css',
 						'../web/socialshareprivacy/socialshareprivacy.css',
 						'../web/js/video-js/video-js.css',
 					],
