@@ -218,8 +218,8 @@ jQuery(function($) {
 				var rate = player.playbackRate();
 				var time = player.currentTime();
 
-				return (document.location.origin + document.location.pathname +
-					((video.length) ? ("?v=" + video.data("video-selector")) : ("")) +
+				return (document.location.origin + document.location.pathname + "?" +
+					((video.length) ? ("v=" + video.data("video-selector")) : ("")) +
 					((rate != 1) ? ("&rate=" + rate) : ("")) +
 					((time) ? ("#t=" + Math.floor(time / 60) + "m" + Math.floor(time % 60) + "s") : (""))
 				);
