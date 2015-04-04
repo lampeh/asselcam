@@ -69,6 +69,7 @@ module.exports = function(grunt) {
 					src: [
 						'../web/bootstrap/css/bootstrap.css',
 						'../web/socialshareprivacy/socialshareprivacy.css',
+						'../web/js/video-js/video-js.css',
 					],
 					ext: '.min.css',
 					extDot: 'last'
