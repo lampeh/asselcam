@@ -15,9 +15,10 @@ module.exports = function(grunt) {
 				files: {
 					'../web/js/dist/common.js': [
 						'../web/js/css.escape.js',
-						'../web/js/jquery.js',
-						'../web/js/jquery.socialshareprivacy.js',
-						'../web/bootstrap/js/bootstrap.js'
+						'../web/js/jquery/jquery.js',
+						'../web/js/jquery/jquery.socialshareprivacy.js',
+						'../web/bootstrap/js/bootstrap.js',
+						'../web/js/socialshareprivacy.js'
 					],
 
 					'../web/js/dist/video.js': [

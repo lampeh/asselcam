@@ -85,7 +85,7 @@
 
 }(typeof global != 'undefined' ? global : this));
 ;
-// Source: ../web/js/jquery.js
+// Source: ../web/js/jquery/jquery.js
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -9292,7 +9292,7 @@ return jQuery;
 
 }));
 ;
-// Source: ../web/js/jquery.socialshareprivacy.js
+// Source: ../web/js/jquery/jquery.socialshareprivacy.js
 /*!
  * jquery.socialshareprivacy.js | 2 Klicks fuer mehr Datenschutz (1.6)
  *
@@ -12032,3 +12032,32 @@ if (typeof jQuery === 'undefined') {
   })
 
 }(jQuery);
+;
+// Source: ../web/js/socialshareprivacy.js
+jQuery(function($) {
+	if($("#socialshareprivacy").length > 0){
+		$("#socialshareprivacy").socialSharePrivacy({
+			"css_path": "/socialshareprivacy/socialshareprivacy.css",
+			"lang_path": "/socialshareprivacy/lang/",
+			"services": {
+				"facebook": {
+					"perma_option": "off",
+					"dummy_img": "/socialshareprivacy/images/dummy_facebook.png",
+					"sharer": {
+						"status": "on",
+						"dummy_img": "/socialshareprivacy/images/dummy_facebook_share_de.png",
+						"img": "/socialshareprivacy/images/facebook_share_de.png"
+					}
+				},
+				"twitter": {
+					"perma_option": "off",
+					"dummy_img": "/socialshareprivacy/images/dummy_twitter.png"
+				},
+				"gplus": {
+					"perma_option": "off",
+					"dummy_img": "/socialshareprivacy/images/dummy_gplus.png"
+				}
+			}
+		});
+	}
+});
