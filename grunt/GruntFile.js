@@ -26,7 +26,17 @@ module.exports = function(grunt) {
 						'../web/js/videojs-playlists.js'
 					]
 				}
+			},
+
+/*
+			bootstrapCSS: {
+				files: [{
+					src: ['../web/css/bootstrap.css', '../web/css/bootstrap-theme.css'],
+					dest: '../web/css/bootstrap-combined.css',
+					banner: '', process: false
+				}]
 			}
+*/
 		},
 
 		uglify: {
@@ -68,6 +78,8 @@ module.exports = function(grunt) {
 					expand: true,
 					src: [
 						'../web/css/bootstrap.css',
+						'../web/css/bootstrap-theme.css',
+//						'../web/css/bootstrap-combined.css',
 						'../web/socialshareprivacy/socialshareprivacy.css',
 						'../web/js/video-js/video-js.css',
 					],
