@@ -31,7 +31,8 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-//				preserveComments: 'some'
+//				preserveComments: 'some',
+//				banner: '/*! <%= gitinfo.local.branch.current.name %> / <%= gitinfo.local.branch.current.SHA %> */\n'
 			},
 
 			all: {
@@ -63,9 +64,10 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-newer');
+	grunt.loadNpmTasks('grunt-gitinfo');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('default', ['concat', 'newer:uglify', 'newer:imagemin']);
+	grunt.registerTask('default', ['gitinfo', 'concat', 'newer:uglify', 'newer:imagemin']);
 }
