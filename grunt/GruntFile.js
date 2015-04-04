@@ -11,24 +11,20 @@ module.exports = function(grunt) {
 				separator: ';\n'
 			},
 
-			common: {
-				nonull: true,
-				src: [
-					'../web/js/css.escape.js',
-					'../web/js/jquery.js',
-					'../web/js/jquery.socialshareprivacy.js',
-					'../web/bootstrap/js/bootstrap.js'
-				],
-				dest: '../web/js/common.js'
-			},
+			all: {
+				files: {
+					'../web/js/dist/common.js': [
+						'../web/js/css.escape.js',
+						'../web/js/jquery.js',
+						'../web/js/jquery.socialshareprivacy.js',
+						'../web/bootstrap/js/bootstrap.js'
+					],
 
-			video: {
-				nonull: true,
-				src: [
-//					'../web/js/video-js/video.js',
-					'../web/js/videojs-playlists.js'
-				],
-				dest: '../web/js/video.js'
+					'../web/js/dist/video.js': [
+//						'../web/js/video-js/video.js',
+						'../web/js/videojs-playlists.js'
+					]
+				}
 			}
 		},
 
@@ -37,16 +33,13 @@ module.exports = function(grunt) {
 //				preserveComments: 'some'
 			},
 
-			common: {
-				files: {
-					'../web/js/common.min.js': ['../web/js/common.js']
-				}
-			},
-
-			video: {
-				files: {
-					'../web/js/video.min.js': ['../web/js/video.js']
-				}
+			all: {
+				files: [{
+					expand: true,
+					src: ['../web/js/dist/*.js', '!../web/js/dist/*.min.js'],
+					ext: '.min.js',
+					extDot: 'last'
+				}]
 			}
 		},
 
@@ -59,7 +52,7 @@ module.exports = function(grunt) {
 				]
 			},
 
-			common: {
+			all: {
 				files: [{
 					expand: true,
 					src: ['../web/**/*.{png,jpg,gif}']
@@ -73,5 +66,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-	grunt.registerTask('default', ['newer:concat', 'newer:uglify', 'newer:imagemin']);
+	grunt.registerTask('default', ['concat', 'newer:uglify', 'newer:imagemin']);
 }
