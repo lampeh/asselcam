@@ -43,7 +43,6 @@
 			</ul>
 		</div>
 	</nav>
-
 	<div class="row">
 		<div class="col-md-2">
 			<nav class="navbar navbar-default">
@@ -276,34 +275,6 @@ jQuery(function($) {
 			})(window.location.search.substr(1).split('&'));
 
 			reloadPlaylist(("" + qs["v"]).replace(/[^0-9-]*/g, ""));
-
-			if ($("#socialshareprivacy").length){
-				$("#socialshareprivacy").socialSharePrivacy({
-					"uri": getCurrentURI,
-					"css_path": "/socialshareprivacy/socialshareprivacy.css",
-					"lang_path": "/socialshareprivacy/lang/",
-//					"alignment": "vertical",
-					"services": {
-						"facebook": {
-							"perma_option": "off",
-							"dummy_img": "/socialshareprivacy/images/dummy_facebook.png",
-							"sharer": {
-								"status": "on",
-								"dummy_img": "/socialshareprivacy/images/dummy_facebook_share_de.png",
-								"img": "/socialshareprivacy/images/facebook_share_de.png"
-							}
-						},
-						"twitter": {
-							"perma_option": "off",
-							"dummy_img": "/socialshareprivacy/images/dummy_twitter.png"
-						},
-						"gplus": {
-							"perma_option": "off",
-							"dummy_img": "/socialshareprivacy/images/dummy_gplus.png"
-						}
-					}
-				});
-			}
 		}
 	);
 });
