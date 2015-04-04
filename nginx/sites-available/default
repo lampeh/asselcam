@@ -35,12 +35,6 @@ server {
 		expires +1h;
 	}
 
-	location /src/ {
-		autoindex on;
-		default_type text/plain;
-		expires +1h;
-	}
-
 	location ~ \.(js|css|woff)$ {
 		expires +1d;
 	}
