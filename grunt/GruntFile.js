@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-//				preserveComments: 'some',
+				preserveComments: 'some',
 //				banner: '/*! <%= gitinfo.local.branch.current.name %> / <%= gitinfo.local.branch.current.SHA %> */\n'
 			},
 
