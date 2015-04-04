@@ -68,6 +68,7 @@
 						Download the <a href="http://videos.asseln.attraktor.org/">video files here</a>.
 				</div>
 				<div class="text-left small">
+					<a href="#" id="download_href" aria-label="Download video" rel="nofollow"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
 					<a href="#" id="link_href" aria-label="Permalink" rel="nofollow"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a><span id="link_text"></span>
 				</div>
 				<button type="button" class="btn btn-default" data-action="first">
@@ -118,6 +119,7 @@ jQuery(function($) {
 		{"controlBar": {"volumeControl": false, "muteToggle": false}, "playbackRates": [0.25, 0.5, 0.75, 1.0, 1.5, 2]},
 		function() {
 			var player = this;
+			var download_href = $("#download_href")[0];
 			var link_href = $("#link_href")[0];
 			var link_text = $("#link_text")[0];
 
@@ -136,10 +138,12 @@ jQuery(function($) {
 						playlist.append($("<li/>")
 							.html($("<a/>")
 								.text(video.title)
-								.attr("href", video.src[0]))
+//								.attr("href", video.src[0]))
+								.attr("href", document.location.origin + document.location.pathname + "?v=" + video.title))
 							.attr({
 								"id": "video-" + idx,
-								"data-video-selector": video.title
+								"data-video-selector": video.title,
+								"data-video-src": video.src[0]
 							})
 						);
 					});
@@ -200,25 +204,29 @@ jQuery(function($) {
 				current = player.pl.current;
 
 				var scrollTarget = $("#video-" + current).addClass("active");
+
+				download_href.href = scrollTarget.data("video-src");
+				link_href.href = getURI(scrollTarget);
+				link_text.innerHTML = getURI(scrollTarget);
+
 				var offset = scrollTarget.position().top - $("#playlist").position().top
 								- ($("#listbox").height() / 2) + (scrollTarget.height() / 2);
-
 				$("#listbox").animate({scrollTop: offset}, 200);
-
-				link_href.href = getCurrentURI();
-				link_text.innerHTML = getCurrentURI();
 			}
 
-			function getCurrentURI() {
-				var video = $("#video-" + current);
+			function getURI(video) {
 				var rate = player.playbackRate();
 				var time = player.currentTime();
 
-				return(document.location.origin + document.location.pathname +
+				return (document.location.origin + document.location.pathname +
 					((video.length) ? ("?v=" + video.data("video-selector")) : ("")) +
 					((rate != 1) ? ("&rate=" + rate) : ("")) +
 					((time) ? ("#t=" + Math.floor(time / 60) + "m" + Math.floor(time % 60) + "s") : (""))
 				);
+			}
+
+			function getCurrentURI() {
+				return getURI($("#video-" + current));
 			}
 
 			player.on("next", updateActive);
@@ -227,10 +235,10 @@ jQuery(function($) {
 			// TODO: optimize?
 			// link content depends on current, player.playbackRate(), player.currentTime()
 //			player.on("timeupdate", function() { link.innerHTML = getCurrentURI(); });
-//			player.setInterval(function() { link.innerHTML = getCurrentURI(); }, 500);
 			player.setInterval(function() {
-				link_href.href = getCurrentURI();
-				link_text.innerHTML = getCurrentURI();
+				var video = $("#video-" + current);
+				link_href.href = getURI(video);
+				link_text.innerHTML = getURI(video);
 			}, 500);
 
 			$("[data-action=next]").on("click", function() {
