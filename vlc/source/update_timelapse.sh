@@ -20,9 +20,9 @@ find "$BASEDIR" -mindepth 1 -maxdepth 1 -type d |while read dir; do
 
 	{ time ionice -c 2 -n 7 nice -20 avconv \
 		-r $FPS \
+		-g $(($FPS*5)) \
 		-f image2 -i "$dir/frame-%04d.png" \
 		-aspect 16:9 \
-		-g 125 \
 		-c libx264 \
 		-preset slower \
 		-profile main \
