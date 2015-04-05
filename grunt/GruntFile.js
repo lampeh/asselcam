@@ -54,6 +54,21 @@ module.exports = function(grunt) {
 			}
 		},
 
+		cssmin: {
+			all: {
+				files: [{
+					expand: true,
+					src: [
+						'../web/css/common.css',
+						'../web/socialshareprivacy/socialshareprivacy.css',
+						'../web/js/video-js/video-js.css',
+					],
+					ext: '.min.css',
+					extDot: 'last'
+				}]
+			}
+		},
+
 		imagemin: {
 			options: {
 				use: [
@@ -69,21 +84,6 @@ module.exports = function(grunt) {
 					src: ['../web/**/*.{png,jpg,gif}']
 				}]
 			}
-		},
-
-		cssmin: {
-			all: {
-				files: [{
-					expand: true,
-					src: [
-						'../web/css/common.css',
-						'../web/socialshareprivacy/socialshareprivacy.css',
-						'../web/js/video-js/video-js.css',
-					],
-					ext: '.min.css',
-					extDot: 'last'
-				}]
-			}
 		}
 	});
 
@@ -94,5 +94,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask('default', ['gitinfo', 'concat', 'newer:uglify', 'newer:imagemin', 'newer:cssmin']);
+	grunt.registerTask('default', ['gitinfo', 'newer:imagemin', 'concat', 'newer:uglify', 'newer:cssmin']);
 }
