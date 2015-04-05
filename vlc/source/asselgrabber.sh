@@ -12,6 +12,7 @@ i=$(($i+1))
 
 laststat=""
 
+# sync to 5s interval
 while [ "$((10#0`date "+%s"` % 5))" != "0" ]; do
 	sleep 0.1;
 done
@@ -21,6 +22,7 @@ while :; do
 	date="`date "+%Y-%m-%d"`"
 
 	[ "$date" != "$lastdate" ] && {
+		# new day, switch directory and reset frame counter
 		touch $dir/done
 		lastdate="$date"
 		dir="$BASEDIR/$date"
@@ -32,10 +34,13 @@ while :; do
 	echo -e "$STAMP\n$file"
 
 	[ -e "$SNAPSHOT" ] && {
-		snapstat="`stat -c "%i %Z %s" "$SNAPSHOT"`"
+		# compare inode and time
+		snapstat="`stat -c "%i %Z" "$SNAPSHOT"`"
 		[ "$snapstat" = "$laststat" ] && { echo "File unchanged. Waiting."; sleep 1; continue; }
 
 		cp -v $SNAPSHOT ${file}.tmp || { echo "Copy error. Retrying."; sleep 1; continue; }
+
+		# add timestamp and frame number
 		convert ${file}.tmp -font Nimbus-Mono-Regular -background transparent -fill yellow \
 			-pointsize 20 -gravity southeast label:"$STAMP" -geometry +10+5 -compose over -composite \
 			-pointsize 8 -gravity southwest label:"`printf "%05d" $i`" -compose over -composite \
@@ -48,6 +53,8 @@ while :; do
 	} || { echo "No such file: $SNAPSHOT"; sleep 1; continue; }
 
 	sleep 1
+
+	# sync to 5s interval
 	while [ "$((10#0`date "+%s"` % 5))" != "0" ]; do
 		sleep 0.5;
 	done
