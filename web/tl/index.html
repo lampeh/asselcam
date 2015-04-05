@@ -219,16 +219,17 @@ jQuery(function($) {
 				current = $("#video-" + player.pl.current).addClass("active");
 
 				download_href.href = current.data("video-src");
-				link_href.href = link_text.innerHTML = getURI(current);
+				link_href.href = link_text.innerHTML = getCurrentURI();
 
 				var offset = current.position().top - $("#playlist").position().top
 								- ($("#listbox").height() / 2) + (current.height() / 2);
 				$("#listbox").animate({scrollTop: offset}, 200);
 			}
 
-			function getURI(video) {
-				var rate = player.playbackRate();
+			function getCurrentURI() {
+				var video = current;
 				var time = player.currentTime();
+				var rate = player.playbackRate();
 
 				return (document.location.origin + document.location.pathname + "?" +
 					((video.length) ? ("v=" + video.data("video-selector")) : ("")) +
@@ -242,8 +243,8 @@ jQuery(function($) {
 
 			// TODO: optimize?
 			// link content depends on current, player.playbackRate(), player.currentTime()
-//			player.on("timeupdate", function() { link_href.href = link_text.innerHTML = getURI(current) });
-			player.setInterval(function() { link_href.href = link_text.innerHTML = getURI(current) }, 500);
+//			player.on("timeupdate", function() { link_href.href = link_text.innerHTML = getCurrentURI() });
+			player.setInterval(function() { link_href.href = link_text.innerHTML = getCurrentURI() }, 500);
 
 			$("[data-action=next]").on("click", function() {
 				player.next();
