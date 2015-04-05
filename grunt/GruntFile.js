@@ -28,15 +28,16 @@ module.exports = function(grunt) {
 				}
 			},
 
-/*
-			bootstrapCSS: {
+			commonCSS: {
 				files: [{
-					src: ['../web/css/bootstrap.css', '../web/css/bootstrap-theme.css'],
-					dest: '../web/css/bootstrap-combined.css',
-					banner: '', process: false
+					banner: '', process: false,
+					dest: '../web/css/common.css',
+					src: [
+						'../web/css/bootstrap.css',
+						'../web/css/bootstrap-theme.css'
+					]
 				}]
 			}
-*/
 		},
 
 		uglify: {
@@ -77,9 +78,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					src: [
-						'../web/css/bootstrap.css',
-						'../web/css/bootstrap-theme.css',
-//						'../web/css/bootstrap-combined.css',
+						'../web/css/common.css',
 						'../web/socialshareprivacy/socialshareprivacy.css',
 						'../web/js/video-js/video-js.css',
 					],
