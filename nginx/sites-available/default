@@ -40,7 +40,7 @@ server {
 	}
 
 	## redirect legacy URLs. may be removed
-	rewrite ^/tl/videos/(.*)$ $scheme://videos.asseln.attraktor.org/$1 redirect;
-	rewrite ^/hls/(.*)$ $scheme://hls.asseln.attraktor.org/$1 redirect;
+	rewrite ^/tl/videos/(.*)$ http://videos.asseln.attraktor.org/$1 redirect;
+	rewrite ^/hls/(.*)$ http://hls.asseln.attraktor.org/$1 redirect;
 	rewrite ^/tl/(2015-01-05|video)\.html$ $scheme://$server_name/tl/ redirect;
 }
