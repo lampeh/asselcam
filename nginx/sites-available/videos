@@ -12,7 +12,7 @@ server {
 	access_log /var/log/nginx/videos-access.log combined buffer=4k flush=1s;
 
 	location ~ \.mp4$ {
-		expires +1w;
+		expires +90d;
 	}
 
 	rewrite ^/robots\.txt$ /.robots.txt;

@@ -35,8 +35,12 @@ server {
 		expires +1h;
 	}
 
-	location ~ \.(js|css|woff)$ {
+	location ~ \.(js|css)$ {
 		expires +1d;
+	}
+
+	location ~ \.(eot|svg|ttf|woff)$ {
+		expires +90d;
 	}
 
 	## redirect legacy URLs. may be removed
