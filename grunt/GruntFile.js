@@ -1,17 +1,17 @@
 module.exports = function(grunt) {
     grunt.initConfig({
 		concat: {
-			options: {
-				// Replace all 'use strict' statements in the code with a single one at the top
-				banner: "'use strict';\n",
-				process: function(src, filepath) {
-					return '// Source: ' + filepath + '\n' +
-						src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+			js: {
+				options: {
+					// Replace all 'use strict' statements in the code with a single one at the top
+					banner: "'use strict';\n",
+					process: function(src, filepath) {
+						return '// Source: ' + filepath + '\n' +
+							src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+					},
+					separator: ';\n'
 				},
-				separator: ';\n'
-			},
 
-			all: {
 				files: {
 					'../web/js/dist/common.js': [
 						'../web/js/css.escape.js',
@@ -28,15 +28,13 @@ module.exports = function(grunt) {
 				}
 			},
 
-			commonCSS: {
-				files: [{
-					banner: '', process: false,
-					dest: '../web/css/common.css',
-					src: [
+			css: {
+				files: {
+					'../web/css/common.css': [
 						'../web/css/bootstrap.css',
 						'../web/css/bootstrap-theme.css'
 					]
-				}]
+				}
 			}
 		},
 
