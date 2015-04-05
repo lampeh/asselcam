@@ -1,5 +1,11 @@
 module.exports = function(grunt) {
     grunt.initConfig({
+		gitinfo: {
+			commands: {
+				describe : ['describe', '--all', '--always', '--tags', '--long', '--dirty']
+			}
+		},
+
 		concat: {
 			js: {
 				options: {
@@ -41,6 +47,7 @@ module.exports = function(grunt) {
 		uglify: {
 			options: {
 				preserveComments: 'some',
+				banner: '/*! <%= gitinfo.describe %> */\n'
 //				banner: '/*! <%= gitinfo.local.branch.current.name %> / <%= gitinfo.local.branch.current.SHA %> */\n'
 			},
 
