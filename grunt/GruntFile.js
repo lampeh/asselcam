@@ -101,5 +101,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-	grunt.registerTask('default', ['gitinfo', 'newer:imagemin', 'concat', 'newer:uglify', 'newer:cssmin']);
+	grunt.registerTask('default', ['gitinfo', 'newer:imagemin', 'newer:concat', 'newer:uglify', 'newer:cssmin']);
 }
