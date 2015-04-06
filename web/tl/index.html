@@ -182,8 +182,8 @@ jQuery(function($) {
 					}
 
 					var seek = 0;
-					var seek_m = location.hash.replace(/^#t=([0-9]*)m.*/, "$1");
-					var seek_s = location.hash.replace(/^#t=([0-9]*m)?([0-9.]*)s.*/, "$2");
+					var seek_m = location.hash.replace(/^#t=([0-9]+)m.*/, "$1");
+					var seek_s = location.hash.replace(/^#t=([0-9]+m)?([0-9.]+)s.*/, "$2");
 
 					if ($.isNumeric(seek_m)) {
 						seek += seek_m * 60
