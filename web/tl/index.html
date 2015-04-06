@@ -136,7 +136,7 @@ jQuery(function($) {
 			})(window.location.search.substr(1).split('&'));
 
 			// keep references used in update loop
-			var here = document.location.origin + document.location.pathname;
+			var here = document.location.origin + document.location.pathname + "?";
 			var link_href = $("#link_href")[0];
 			var link_text = $("#link_text")[0];
 			var download_href = $("#download_href")[0];
@@ -156,7 +156,7 @@ jQuery(function($) {
 						playlist.append($("<li/>")
 							.html($("<a/>")
 								.text(video.title)
-								.attr("href", here + "?v=" + video.title))
+								.attr("href", here + "v=" + video.title))
 							.attr({
 								"id": "video-" + idx,
 								"data-video-selector": video.title,
@@ -232,7 +232,7 @@ jQuery(function($) {
 				var time = player.currentTime();
 				var rate = player.playbackRate();
 
-				return (here + "?" +
+				return (here +
 					((video.length) ? ("v=" + video.data("video-selector")) : ("")) +
 					((rate != 1) ? ("&rate=" + rate) : ("")) +
 					((time) ? ("#t=" + Math.floor(time / 60) + "m" + Math.floor(time % 60) + "s") : (""))
