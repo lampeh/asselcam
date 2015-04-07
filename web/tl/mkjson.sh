@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BASEDIR="/var/www/asseln/tl/videos"
+BASEDIR="/var/www/videos"
 #URL="videos"
 URL="http://videos.asseln.attraktor.org"
 

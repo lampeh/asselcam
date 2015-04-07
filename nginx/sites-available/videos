@@ -5,7 +5,7 @@ server {
 	server_name videos.asseln.attraktor.org;
 	server_name videos-origin.asseln.attraktor.org;
 
-	root /var/www/asseln/tl/videos;
+	root /var/www/videos;
 
 	autoindex on;
 
