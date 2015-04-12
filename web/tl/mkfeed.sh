@@ -24,15 +24,14 @@ cat <<-_EOF_
 	    <lastBuildDate>`date -R`</lastBuildDate>
 _EOF_
 
-#ls -t $BASEDIR/
-find $BASEDIR -maxdepth 1 -type f -name "*.mp4" |sort -r |head -n 60 |while read fname; do
+find $BASEDIR -mindepth 3 -type f -name "*.mp4" |sort -r |head -n 60 |while read fname; do
 	title="`basename "$fname" .mp4`"
 	size="`stat -c "%s" "$fname"`";
 	date="`date -R -r "$fname"`"
 	cat <<-_EOF_
 		    <item>
 		        <title>$title</title>
-		        <enclosure url="$URL/`basename "$fname"`" length="$size" type="video/mp4"/>
+		        <enclosure url="$URL${fname##$BASEDIR}" length="$size" type="video/mp4"/>
 		        <guid>${PLAYURL}?v=$title</guid>
 		        <pubDate>$date</pubDate>
 		    </item>
