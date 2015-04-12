@@ -3,7 +3,7 @@
 BASEDIR=/home/assel/asseln/snapshots
 SNAPSHOT=/run/shm/asseln-latest.png
 
-date="`date "+%Y-%m-%d"`"
+date="`date "+%Y/%m/%Y-%m-%d"`"
 lastdate="$date"
 dir="$BASEDIR/$date"
 mkdir -p $dir
@@ -19,7 +19,7 @@ done
 
 while :; do
 	STAMP="`date +"%H:%M:%S\n%d.%m.%Y"`"
-	date="`date "+%Y-%m-%d"`"
+	date="`date "+%Y/%m/%Y-%m-%d"`"
 
 	[ "$date" != "$lastdate" ] && {
 		# new day, switch directory and reset frame counter

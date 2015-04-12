@@ -3,8 +3,8 @@
 BASEDIR=/home/assel/asseln/snapshots
 FPS=24
 
-find "$BASEDIR" -mindepth 1 -maxdepth 1 -type d |while read dir; do
-	file="$BASEDIR/`basename $dir`.mp4"
+find "$BASEDIR" -mindepth 3 -maxdepth 3 -type d |while read dir; do
+	file="${dir}.mp4"
 
 	if [ ! -e "$dir/done" ]; then
 		if [ "$1" != "all" ]; then

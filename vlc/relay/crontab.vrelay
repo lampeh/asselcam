@@ -1,3 +1,3 @@
 # m h  dom mon dow   command
 ## sync new videos, update JSON and podcast
-23 1  * * *  { rsync -tu assel@192.168.63.2:/home/assel/asseln/snapshots/*.mp4 /var/www/videos/; /var/www/asseln/tl/mkfeed.sh >/var/www/asseln/tl/videos.xml; /var/www/asseln/tl/mkjson.sh >/var/www/asseln/tl/videos.json; }
+23 1  * * *  { rsync -turm -f '+ *.mp4' -f '+ */' -f '- *' assel@192.168.63.2:/home/assel/asseln/snapshots/ /var/www/videos/; /var/www/asseln/tl/mkfeed.sh >/var/www/asseln/tl/videos.xml; /var/www/asseln/tl/mkjson.sh >/var/www/asseln/tl/videos.json; }
