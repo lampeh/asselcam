@@ -20,18 +20,18 @@ module.exports = function(grunt) {
 
 				files: {
 					'../web/js/common.js': [
+						'../bower_components/jquery/dist/jquery.js',
+						'../bower_components/bootstrap/dist/js/bootstrap.js',
 						'../web/js/misc/css.escape.js',
-						'../web/js/jquery/jquery.js',
-						'../web/js/jquery/jquery.socialshareprivacy.js',
-						'../web/js/bootstrap/bootstrap.js',
+						'../web/js/misc/jquery.socialshareprivacy.js',
 						'../web/js/misc/socialshareprivacy.js'
 					],
 
 					'../web/js/video.js': [
-//						'../web/js/angular/angular.js',
-//						'../web/js/angular/ui-bootstrap-tpls.js',
-//						'../web/js/video-js/video.js',
-						'../web/js/misc/videojs-playlists.js'
+//						'../bower_components/angular/angular.js',
+//						'../bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+//						'../bower_components/videojs/dist/video-js/video.dev.js',
+						'../bower_components/videojs-playlists/dist/videojs-playlists.js'
 					]
 				}
 			},
@@ -39,9 +39,9 @@ module.exports = function(grunt) {
 			css: {
 				files: {
 					'../web/css/common.css': [
-//						'../web/css/angular/angular-cloak.css',
-						'../web/css/bootstrap/bootstrap.css',
-						'../web/css/bootstrap/bootstrap-theme.css'
+//						'../web/css/misc/angular-cloak.css',
+						'../bower_components/bootstrap/dist/css/bootstrap.css',
+						'../bower_components/bootstrap/dist/css/bootstrap-theme.css'
 					]
 				}
 			}

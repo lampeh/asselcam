@@ -1,0 +1,23 @@
+{
+  "name": "videojs-playlists",
+  "description": "Playlists done right for Videojs",
+  "version": "0.2.0",
+  "homepage": "https://github.com/Belelros/videojs-playLists",
+  "license": "MIT",
+  "copyright": "Antonio Laguna",
+  "main": "dist/videojs-playlists.js",
+  "dependencies": {},
+  "devDependencies": {
+    "assert": "*"
+  },
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "78aa8fbaa8bee9187e6a836b0c3a023528c326e7"
+  },
+  "_source": "git://github.com/Belelros/videojs-playLists.git",
+  "_target": "~0.2.0",
+  "_originalSource": "videojs-playlists",
+  "_direct": true
+}
