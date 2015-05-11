@@ -1,5 +1,5 @@
 'use strict';
-// Source: ../web/js/videojs-playlists.js
+// Source: ../web/js/misc/videojs-playlists.js
 /*!
  * videojs-playlists - Playlists done right for Videojs
  * v0.1.1

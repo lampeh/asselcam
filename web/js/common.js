@@ -1,5 +1,5 @@
 'use strict';
-// Source: ../web/js/css.escape.js
+// Source: ../web/js/misc/css.escape.js
 /*! https://mths.be/cssescape v0.2.1 by @mathias | MIT license */
 (function(root) {
 
@@ -9740,7 +9740,7 @@ return jQuery;
     }; // $.fn.socialSharePrivacy = function (settings) {
 }(jQuery));
 ;
-// Source: ../web/js/bootstrap.js
+// Source: ../web/js/bootstrap/bootstrap.js
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -12034,7 +12034,7 @@ var version = $.fn.jquery.split(' ')[0].split('.')
 
 }(jQuery);
 ;
-// Source: ../web/js/socialshareprivacy.js
+// Source: ../web/js/misc/socialshareprivacy.js
 jQuery(function($) {
 	if($("#socialshareprivacy").length > 0){
 		$("#socialshareprivacy").socialSharePrivacy({

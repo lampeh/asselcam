@@ -19,17 +19,19 @@ module.exports = function(grunt) {
 				},
 
 				files: {
-					'../web/js/dist/common.js': [
-						'../web/js/css.escape.js',
+					'../web/js/common.js': [
+						'../web/js/misc/css.escape.js',
 						'../web/js/jquery/jquery.js',
 						'../web/js/jquery/jquery.socialshareprivacy.js',
-						'../web/js/bootstrap.js',
-						'../web/js/socialshareprivacy.js'
+						'../web/js/bootstrap/bootstrap.js',
+						'../web/js/misc/socialshareprivacy.js'
 					],
 
-					'../web/js/dist/video.js': [
+					'../web/js/video.js': [
+//						'../web/js/angular/angular.js',
+//						'../web/js/angular/ui-bootstrap-tpls.js',
 //						'../web/js/video-js/video.js',
-						'../web/js/videojs-playlists.js'
+						'../web/js/misc/videojs-playlists.js'
 					]
 				}
 			},
@@ -37,8 +39,9 @@ module.exports = function(grunt) {
 			css: {
 				files: {
 					'../web/css/common.css': [
-						'../web/css/bootstrap.css',
-						'../web/css/bootstrap-theme.css'
+//						'../web/css/angular/angular-cloak.css',
+						'../web/css/bootstrap/bootstrap.css',
+						'../web/css/bootstrap/bootstrap-theme.css'
 					]
 				}
 			}
@@ -54,7 +57,7 @@ module.exports = function(grunt) {
 			all: {
 				files: [{
 					expand: true,
-					src: ['../web/js/dist/*.js', '!../web/js/dist/*.min.js'],
+					src: ['../web/js/*.js', '!../web/js/*.min.js'],
 					ext: '.min.js',
 					extDot: 'last'
 				}]
