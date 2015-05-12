@@ -35,6 +35,7 @@ module.exports = function(grunt) {
 					'../web/js/common-angular.js': [
 						'../bower_components/angular/angular.js',
 						'../bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+						'../bower_components/ngvideo/dist/ng-video.js',
 						'../web/js/misc/css.escape.js'
 					]
 
