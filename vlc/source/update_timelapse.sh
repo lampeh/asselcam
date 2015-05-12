@@ -20,7 +20,6 @@ find "$BASEDIR" -mindepth 3 -maxdepth 3 -type d |while read dir; do
 
 	{ time ionice -c 2 -n 7 nice -20 avconv \
 		-r $FPS \
-		-g $(($FPS*5)) \
 		-f image2 -i "$dir/frame-%04d.png" \
 		-aspect 16:9 \
 		-c libx264 \
@@ -29,6 +28,7 @@ find "$BASEDIR" -mindepth 3 -maxdepth 3 -type d |while read dir; do
 		-me_method dia \
 		-subq 10 \
 		-threads 2 \
+		-g $(($FPS*5)) \
 		-vf "movie=/home/assel/asseln/attraktor_logo_150.png [watermark];[in][watermark] overlay=1080:25 [out]" \
 		-f mp4 -y $dir/tmp.mp4; } || rm -v $dir/tmp.mp4
 
