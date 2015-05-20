@@ -11,13 +11,17 @@ server {
 
 	access_log /var/log/nginx/hls-access.log combined buffer=4k flush=1s;
 
+	location / {
+		include /etc/nginx/cors.conf;
+	}
+
 	location ~ \.m3u8$ {
 		expires modified +4s;
+		include /etc/nginx/cors.conf;
 	}
 
 	location ~ \.ts$ {
 		expires +300s;
+		include /etc/nginx/cors.conf;
 	}
-
-	include /etc/nginx/cors.conf;
 }

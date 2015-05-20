@@ -35,6 +35,10 @@ server {
 		expires +1h;
 	}
 
+	location ~ \.json$ {
+		expires +10m;
+	}
+
 	location ~ \.(js|css)$ {
 		expires +1d;
 	}

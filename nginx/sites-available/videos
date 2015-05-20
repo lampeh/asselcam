@@ -11,15 +11,22 @@ server {
 
 	access_log /var/log/nginx/videos-access.log combined buffer=4k flush=1s;
 
+	location / {
+		include /etc/nginx/cors.conf;
+	}
+
 	location ~ \.mp4$ {
 		expires +90d;
+		include /etc/nginx/cors.conf;
+	}
+
+	location ~ \.json$ {
+		expires +10m;
+		include /etc/nginx/cors.conf;
 	}
 
 	rewrite ^/robots\.txt$ /.robots.txt;
 
 	## redirect legacy URLs. may be removed
 	rewrite "^/([0-9]{4})-([0-9]{2})-([0-9]{2})\.mp4$" "/$1/$2/$1-$2-$3.mp4" redirect;
-
-	## enable JSON cross-origin requests
-	include /etc/nginx/cors.conf;
 }
