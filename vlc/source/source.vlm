@@ -1,5 +1,5 @@
 new camera broadcast enabled loop
-setup camera input v4l2:///dev/video0:width=1280:height=720:fps=10:set-ctrls{focus_auto=0,focus_absolute=70}
+setup camera input v4l2:///dev/v4l/by-id/usb-046d_HD_Webcam_C525_3A7865D0-video-index0:width=1280:height=720:fps=10:set-ctrls{focus_auto=0,focus_absolute=70}
 setup camera option input-repeat=-1
 setup camera option sout-keep
 setup camera option no-sout-audio
