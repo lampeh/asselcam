@@ -31,14 +31,14 @@ while :; do
 	}
 
 	file="$dir/frame-`printf %04d $i`.png"
-	echo -e "$STAMP\n$file"
+	echo -e "$STAMP\n$file" >&2
 
 	[ -e "$SNAPSHOT" ] && {
 		# compare inode and time
 		snapstat="`stat -c "%i %Z" "$SNAPSHOT"`"
-		[ "$snapstat" = "$laststat" ] && { echo "File unchanged. Waiting."; sleep 1; continue; }
+		[ "$snapstat" = "$laststat" ] && { echo "File unchanged. Waiting." >&2; sleep 1; continue; }
 
-		cp -v $SNAPSHOT ${file}.tmp || { echo "Copy error. Retrying."; sleep 1; continue; }
+		cp -v $SNAPSHOT ${file}.tmp || { echo "Copy error. Retrying." >&2; sleep 1; continue; }
 
 		# add timestamp and frame number
 		convert ${file}.tmp -font Nimbus-Mono-Regular -background transparent -fill yellow \
@@ -50,7 +50,7 @@ while :; do
 
 		laststat="$snapstat"
 		i=$(($i+1))
-	} || { echo "No such file: $SNAPSHOT"; sleep 1; continue; }
+	} || { echo "No such file: $SNAPSHOT" >&2; sleep 1; continue; }
 
 	sleep 1
 
