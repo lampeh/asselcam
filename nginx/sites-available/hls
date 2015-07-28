@@ -5,7 +5,7 @@ server {
 	server_name hls.asseln.attraktor.org;
 	server_name hls-origin.asseln.attraktor.org;
 
-	root /var/www/asseln/hls;
+	root /var/www/hls;
 
 	index h264-hls.m3u8;
 
