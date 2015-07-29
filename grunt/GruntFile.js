@@ -30,22 +30,13 @@ module.exports = function(grunt) {
 					'../web/js/video.js': [
 //						'../bower_components/videojs/dist/video-js/video.dev.js',
 						'../bower_components/videojs-playlists/dist/videojs-playlists.js'
-					],
-
-					'../web/js/common-angular.js': [
-						'../bower_components/angular/angular.js',
-						'../bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
-						'../bower_components/ngvideo/dist/ng-video.js',
-						'../web/js/misc/css.escape.js'
 					]
-
 				}
 			},
 
 			css: {
 				files: {
 					'../web/css/common.css': [
-						'../web/css/misc/angular-cloak.css',
 						'../bower_components/bootstrap/dist/css/bootstrap.css',
 						'../bower_components/bootstrap/dist/css/bootstrap-theme.css'
 					]
