@@ -16,12 +16,12 @@
 	<link href="/js/video-js/video-js.min.css" rel="stylesheet">
 
 	<style>
-		.player { max-width: 1280px; }
 		.playlist { max-height: 670px; overflow: auto; }
+		.player { max-width: 1280px; margin-left: auto; }
+		.commentbox { max-height: 720px; overflow: auto; }
 		.video-js { padding-top: 56.25%; }
 		.vjs-fullscreen { padding-top: 0px; }
 		.vjs-default-skin .vjs-control-bar { background-color: rgba(48, 48, 48, 0.4); }
-		/* .commentbox { max-height: 720px; overflow: auto; } */
 	</style>
 </head>
 <body>
@@ -109,16 +109,7 @@
 var disqus_shortname = 'asseln';
 var disqus_identifier = 'tl-all';
 
-
 jQuery(function($) {
-
-	/* Disqus thread */
-	(function() {
-		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	})();
-
 	var videotag = ($("<video/>")
 		.attr({
 			"width": "auto", "height": "auto",
@@ -295,5 +286,6 @@ jQuery(function($) {
 	);
 });
 </script>
+<script src="//asseln.disqus.com/embed.js" async></script>
 </body>
 </html>
