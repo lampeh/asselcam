@@ -1,3 +1,4 @@
+/* Twitter Bootstrap */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -6984,4 +6985,31 @@ button.close {
   border-color: #dcdcdc;
   -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+/* Videos */
+.playlist {
+  max-height: 670px;
+  overflow: auto;
+}
+@media (max-width: 1199px) {
+  .playlist {
+    max-height: 9em;
+  }
+}
+.player {
+  max-width: 1280px;
+  margin-left: auto;
+}
+.commentbox {
+  max-height: 720px;
+  overflow: auto;
+}
+.video-js {
+  padding-top: 56.25%;
+}
+.vjs-fullscreen {
+  padding-top: 0px;
+}
+.vjs-default-skin .vjs-control-bar {
+  background-color: rgba(48, 48, 48, 0.4);
 }
