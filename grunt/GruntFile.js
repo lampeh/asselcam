@@ -8,6 +8,18 @@ module.exports = function(grunt) {
 			}
 		},
 
+		less: {
+			css: {
+				files: {
+					'../web/css/common.css': [
+						'../web/css/common.less',
+						'../bower_components/bootstrap/less/bootstrap.less',
+						'../bower_components/bootstrap/less/theme.less'
+					]
+				}
+			}
+		},
+
 		concat: {
 			js: {
 				options: {
@@ -32,15 +44,6 @@ module.exports = function(grunt) {
 					'../web/js/video.js': [
 //						'../bower_components/videojs/dist/video-js/video.dev.js',
 						'../bower_components/videojs-playlists/dist/videojs-playlists.js'
-					]
-				}
-			},
-
-			css: {
-				files: {
-					'../web/css/common.css': [
-						'../bower_components/bootstrap/dist/css/bootstrap.css',
-						'../bower_components/bootstrap/dist/css/bootstrap-theme.css'
 					]
 				}
 			}
@@ -96,5 +99,5 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['gitinfo', 'newer:imagemin', 'newer:concat', 'newer:uglify', 'newer:cssmin']);
+	grunt.registerTask('default', ['gitinfo', 'newer:imagemin', 'newer:less', 'newer:concat', 'newer:uglify', 'newer:cssmin']);
 }
