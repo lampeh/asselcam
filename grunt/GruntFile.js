@@ -9,12 +9,15 @@ module.exports = function(grunt) {
 		},
 
 		less: {
-			css: {
+			bootstrap: {
+				options: {
+					paths: ['../bower_components/bootstrap/less'],
+					report: 'min',
+				},
+
 				files: {
-					'../web/css/common.css': [
-						'../web/css/common.less',
-						'../bower_components/bootstrap/less/bootstrap.less',
-						'../bower_components/bootstrap/less/theme.less'
+					'../web/css/bootstrap.css': [
+						'../web/css/bootstrap-config.less'
 					]
 				}
 			}
@@ -44,6 +47,14 @@ module.exports = function(grunt) {
 					'../web/js/video.js': [
 //						'../bower_components/videojs/dist/video-js/video.dev.js',
 						'../bower_components/videojs-playlists/dist/videojs-playlists.js'
+					]
+				}
+			},
+
+			css: {
+				files: {
+					'../web/css/common.css': [
+						'../web/css/bootstrap.css'
 					]
 				}
 			}

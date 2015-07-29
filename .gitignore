@@ -4,4 +4,5 @@ web/hls/*.ts
 web/tl/videos/*.mp4
 web/tl/videos.json
 web/tl/videos.xml
+web/css/bootstrap.css
 grunt/node_modules/
