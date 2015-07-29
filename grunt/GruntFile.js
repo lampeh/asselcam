@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
-    grunt.initConfig({
+	require('jit-grunt')(grunt);
+
+	grunt.initConfig({
 		gitinfo: {
 			commands: {
 				describe : ['describe', '--all', '--always', '--tags', '--long', '--dirty']
@@ -93,13 +95,6 @@ module.exports = function(grunt) {
 			}
 		}
 	});
-
-	grunt.loadNpmTasks('grunt-newer');
-	grunt.loadNpmTasks('grunt-gitinfo');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 	grunt.registerTask('default', ['gitinfo', 'newer:imagemin', 'newer:concat', 'newer:uglify', 'newer:cssmin']);
 }
