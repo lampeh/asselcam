@@ -11,8 +11,9 @@ module.exports = function(grunt) {
 		less: {
 			common: {
 				options: {
-					paths: ['../bower_components/bootstrap/less'],
-					report: 'min',
+					banner: '/*! <%= gitinfo.describe %> */\n',
+					paths: ['../bower_components'],
+					report: 'min'
 				},
 
 				files: {
@@ -56,7 +57,6 @@ module.exports = function(grunt) {
 			options: {
 				preserveComments: 'some',
 				banner: '/*! <%= gitinfo.describe %> */\n'
-//				banner: '/*! <%= gitinfo.local.branch.current.name %> / <%= gitinfo.local.branch.current.SHA %> */\n'
 			},
 
 			all: {
