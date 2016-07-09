@@ -1,7 +1,7 @@
 {
   "name": "video.js",
   "description": "An HTML5 and Flash video player with a common API and skin for both.",
-  "version": "4.12.6",
+  "version": "4.12.15",
   "main": [
     "dist/video-js/video.js",
     "dist/video-js/video-js.css",
@@ -26,14 +26,13 @@
     "build"
   ],
   "homepage": "https://github.com/videojs/video.js",
-  "_release": "4.12.6",
+  "_release": "4.12.15",
   "_resolution": {
     "type": "version",
-    "tag": "v4.12.6",
-    "commit": "88af555852efae825ac49f08716e4f703db587e8"
+    "tag": "v4.12.15",
+    "commit": "bdd23d93e5da00fa3ee2eaab36063c572d993f25"
   },
-  "_source": "git://github.com/videojs/video.js.git",
-  "_target": "~4.12.6",
-  "_originalSource": "videojs",
-  "_direct": true
+  "_source": "https://github.com/videojs/video.js.git",
+  "_target": "~4",
+  "_originalSource": "videojs"
 }

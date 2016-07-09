@@ -18,9 +18,6 @@ HTML5 Media Controller - Wrapper for HTML5 Media API
   - [isSupported](#issupported-static)
   - [supportsNativeTextTracks](#supportsnativetexttracks-static)
 
-- [UNDEFINED](#undefined)
-  - [nativeSourceHandler](#nativesourcehandler-static)
-
 ---
 
 ## METHODS
@@ -31,7 +28,7 @@ HTML5 Media Controller - Wrapper for HTML5 Media API
 ##### RETURNS: 
 * `[type]` [description]
 
-_defined in_: [src/js/media/html5.js#L542](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L542)
+_defined in_: [src/js/media/html5.js#L548](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L548)
 
 ---
 
@@ -43,7 +40,7 @@ _defined in_: [src/js/media/html5.js#L542](https://github.com/videojs/video.js/b
 ##### RETURNS: 
 * `Boolean` 
 
-_defined in_: [src/js/media/html5.js#L532](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L532)
+_defined in_: [src/js/media/html5.js#L538](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L538)
 
 ---
 
@@ -64,7 +61,7 @@ _defined in_: [src/js/media/html5.js#L14](https://github.com/videojs/video.js/bl
 ##### RETURNS: 
 * `Boolean` 
 
-_defined in_: [src/js/media/html5.js#L452](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L452)
+_defined in_: [src/js/media/html5.js#L436](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L436)
 
 ---
 
@@ -74,21 +71,7 @@ _defined in_: [src/js/media/html5.js#L452](https://github.com/videojs/video.js/b
 ##### RETURNS: 
 * `Boolean` 
 
-_defined in_: [src/js/media/html5.js#L552](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L552)
-
----
-
-## UNDEFINED
-
-### nativeSourceHandler `STATIC`
-> The default native source handler.
-> This simply passes the source to the video element. Nothing fancy.
-
-##### PARAMETERS: 
-* __source__ `Object` The source object
-* __tech__ `vjs.Html5` The instance of the HTML5 tech
-
-_defined in_: [src/js/media/html5.js#L472](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L472)
+_defined in_: [src/js/media/html5.js#L558](https://github.com/videojs/video.js/blob/master/src/js/media/html5.js#L558)
 
 ---
 

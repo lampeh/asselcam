@@ -101,6 +101,10 @@ vjs.Flash.prototype.dispose = function(){
 };
 
 vjs.Flash.prototype.play = function(){
+  if (this.ended()) {
+    this['setCurrentTime'](0);
+  }
+
   this.el_.vjs_play();
 };
 
@@ -164,8 +168,27 @@ vjs.Flash.prototype['setPoster'] = function(){
   // poster images are not handled by the Flash tech so make this a no-op
 };
 
+vjs.Flash.prototype.seekable = function() {
+  var duration = this.duration();
+  if (duration === 0) {
+    // The SWF reports a duration of zero when the actual duration is unknown
+    return vjs.createTimeRange();
+  }
+  return vjs.createTimeRange(0, this.duration());
+};
+
 vjs.Flash.prototype.buffered = function(){
+  if (!this.el_.vjs_getProperty) {
+    return vjs.createTimeRange();
+  }
   return vjs.createTimeRange(0, this.el_.vjs_getProperty('buffered'));
+};
+
+vjs.Flash.prototype.duration = function(){
+  if (!this.el_.vjs_getProperty) {
+    return 0;
+  }
+  return this.el_.vjs_getProperty('duration');
 };
 
 vjs.Flash.prototype.supportsFullScreen = function(){
@@ -180,7 +203,7 @@ vjs.Flash.prototype.enterFullScreen = function(){
   // Create setters and getters for attributes
   var api = vjs.Flash.prototype,
     readWrite = 'rtmpConnection,rtmpStream,preload,defaultPlaybackRate,playbackRate,autoplay,loop,mediaGroup,controller,controls,volume,muted,defaultMuted'.split(','),
-    readOnly = 'error,networkState,readyState,seeking,initialTime,duration,startOffsetTime,paused,played,seekable,ended,videoTracks,audioTracks,videoWidth,videoHeight'.split(','),
+    readOnly = 'error,networkState,readyState,seeking,initialTime,startOffsetTime,paused,played,ended,videoTracks,audioTracks,videoWidth,videoHeight'.split(','),
     // Overridden: buffered, currentTime, currentSrc
     i;
 
@@ -220,14 +243,14 @@ vjs.MediaTechController.withSourceHandlers(vjs.Flash);
  * @param  {Object} source   The source object
  * @param  {vjs.Flash} tech  The instance of the Flash tech
  */
-vjs.Flash.nativeSourceHandler = {};
+vjs.Flash['nativeSourceHandler'] = {};
 
 /**
  * Check Flash can handle the source natively
  * @param  {Object} source  The source object
  * @return {String}         'probably', 'maybe', or '' (empty string)
  */
-vjs.Flash.nativeSourceHandler.canHandleSource = function(source){
+vjs.Flash['nativeSourceHandler']['canHandleSource'] = function(source){
   var type;
 
   if (!source.type) {
@@ -251,7 +274,7 @@ vjs.Flash.nativeSourceHandler.canHandleSource = function(source){
  * @param  {Object} source    The source object
  * @param  {vjs.Flash} tech   The instance of the Flash tech
  */
-vjs.Flash.nativeSourceHandler.handleSource = function(source, tech){
+vjs.Flash['nativeSourceHandler']['handleSource'] = function(source, tech){
   tech.setSrc(source.src);
 };
 
@@ -259,10 +282,10 @@ vjs.Flash.nativeSourceHandler.handleSource = function(source, tech){
  * Clean up the source handler when disposing the player or switching sources..
  * (no cleanup is needed when supporting the format natively)
  */
-vjs.Flash.nativeSourceHandler.dispose = function(){};
+vjs.Flash['nativeSourceHandler']['dispose'] = function(){};
 
 // Register the native source handler
-vjs.Flash.registerSourceHandler(vjs.Flash.nativeSourceHandler);
+vjs.Flash['registerSourceHandler'](vjs.Flash['nativeSourceHandler']);
 
 vjs.Flash.formats = {
   'video/flv': 'FLV',

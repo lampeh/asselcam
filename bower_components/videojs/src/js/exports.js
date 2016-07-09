@@ -101,6 +101,7 @@ goog.exportProperty(vjs.Player.prototype, 'remoteTextTracks', vjs.Player.prototy
 goog.exportProperty(vjs.Player.prototype, 'addTextTrack', vjs.Player.prototype.addTextTrack);
 goog.exportProperty(vjs.Player.prototype, 'addRemoteTextTrack', vjs.Player.prototype.addRemoteTextTrack);
 goog.exportProperty(vjs.Player.prototype, 'removeRemoteTextTrack', vjs.Player.prototype.removeRemoteTextTrack);
+goog.exportProperty(vjs.Player.prototype, 'seekable', vjs.Player.prototype.seekable);
 
 goog.exportSymbol('videojs.MediaLoader', vjs.MediaLoader);
 goog.exportSymbol('videojs.TextTrackDisplay', vjs.TextTrackDisplay);
@@ -182,7 +183,6 @@ goog.exportProperty(vjs.Html5.prototype, 'exitFullScreen', vjs.Html5.prototype.e
 goog.exportProperty(vjs.Html5.prototype, 'playbackRate', vjs.Html5.prototype.playbackRate);
 goog.exportProperty(vjs.Html5.prototype, 'setPlaybackRate', vjs.Html5.prototype.setPlaybackRate);
 // Source Handler Functions
-goog.exportProperty(vjs.Html5, 'registerSourceHandler', vjs.Html5.registerSourceHandler);
 goog.exportProperty(vjs.Html5, 'selectSourceHandler', vjs.Html5.selectSourceHandler);
 goog.exportProperty(vjs.Html5.prototype, 'setSource', vjs.Html5.prototype.setSource);
 goog.exportProperty(vjs.Html5.prototype, 'disposeSourceHandler', vjs.Html5.prototype.disposeSourceHandler);
@@ -200,7 +200,6 @@ goog.exportProperty(vjs.Flash, 'embed', vjs.Flash.embed);
 goog.exportProperty(vjs.Flash, 'version', vjs.Flash.version);
 goog.exportProperty(vjs.Flash.prototype, 'setSource', vjs.Flash.prototype.setSource);
 // Source Handler Functions
-goog.exportProperty(vjs.Flash, 'registerSourceHandler', vjs.Flash.registerSourceHandler);
 goog.exportProperty(vjs.Flash, 'selectSourceHandler', vjs.Flash.selectSourceHandler);
 goog.exportProperty(vjs.Flash.prototype, 'setSource', vjs.Flash.prototype.setSource);
 goog.exportProperty(vjs.Flash.prototype, 'disposeSourceHandler', vjs.Flash.prototype.disposeSourceHandler);

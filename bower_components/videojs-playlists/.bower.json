@@ -16,8 +16,7 @@
     "tag": "0.2.0",
     "commit": "78aa8fbaa8bee9187e6a836b0c3a023528c326e7"
   },
-  "_source": "git://github.com/Belelros/videojs-playLists.git",
-  "_target": "~0.2.0",
-  "_originalSource": "videojs-playlists",
-  "_direct": true
+  "_source": "https://github.com/Belelros/videojs-playLists.git",
+  "_target": "~0",
+  "_originalSource": "videojs-playlists"
 }
