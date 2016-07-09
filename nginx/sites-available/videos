@@ -3,7 +3,7 @@ server {
 	listen [::]:80;
 
 	server_name videos.asseln.attraktor.org;
-	server_name videos-origin.asseln.attraktor.org;
+	server_name videos.origin.asseln.attraktor.org;
 
 	root /var/www/videos;
 
@@ -23,6 +23,11 @@ server {
 	location ~ \.json$ {
 		expires +10m;
 		include /etc/nginx/cors.conf;
+	}
+
+	location = /favicon.ico {
+		expires +90d;
+		alias /var/www/asseln/favicon.ico;
 	}
 
 	rewrite ^/robots\.txt$ /.robots.txt;
