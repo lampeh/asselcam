@@ -3,7 +3,7 @@ server {
 	listen [::]:80;
 
 	server_name hls.asseln.attraktor.org;
-	server_name hls-origin.asseln.attraktor.org;
+	server_name hls.origin.asseln.attraktor.org;
 
 	root /var/www/hls;
 
@@ -16,12 +16,18 @@ server {
 	}
 
 	location ~ \.m3u8$ {
-		expires modified +4s;
+		expires modified +6s;
+#		expires +5s;
 		include /etc/nginx/cors.conf;
 	}
 
 	location ~ \.ts$ {
 		expires +300s;
 		include /etc/nginx/cors.conf;
+	}
+
+	location = /favicon.ico {
+		expires +90d;
+		alias /var/www/asseln/favicon.ico;
 	}
 }
