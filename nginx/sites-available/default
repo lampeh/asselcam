@@ -57,7 +57,7 @@ server {
 	rewrite ^/hls/(.*)$ http://hls.asseln.attraktor.org/$1 permanent;
 	rewrite ^/h264-hls\.m3u8$ http://hls.asseln.attraktor.org/h264-hls.m3u8 permanent;
 	rewrite ^/tl/videos/(.*)$ http://videos.asseln.attraktor.org/$1 permanent;
-	rewrite ^/tl/videos\.(json|xml)$ http://videos.asseln.attraktor.org/$1 permanent;
+	rewrite ^/tl/(videos\.(json|xml))$ http://videos.asseln.attraktor.org/$1 permanent;
 	rewrite ^/tl/2015-01-05\.html$ $scheme://$server_name/tl/?v=2015-01-05 permanent;
 	rewrite ^/tl/video\.html$ $scheme://$server_name/tl/ permanent;
 }
