@@ -2,6 +2,7 @@
   "name": "asselcam-frontend",
   "version": "0.0.1",
   "devDependencies": {
+    "bower": "~1",
     "grunt": "~1",
     "grunt-cli": "~1",
     "grunt-contrib-concat": "~1",
