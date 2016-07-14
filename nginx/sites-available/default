@@ -24,7 +24,7 @@ server {
 #	add_header Alternate-Protocol 443:npn-spdy/3;
 
 #	root /var/www/asseln;
-	root /usr/src/asselcam/web;
+	root /usr/src/asselcam/web/dist;
 
 	index index.html;
 
