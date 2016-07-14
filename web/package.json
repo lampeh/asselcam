@@ -1,0 +1,22 @@
+{
+  "name": "asselcam-frontend",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~1",
+    "grunt-cli": "~1",
+    "grunt-contrib-concat": "~1",
+    "grunt-contrib-copy": "~1",
+    "grunt-contrib-cssmin": "~1",
+    "grunt-contrib-htmlmin": "~1",
+    "grunt-contrib-imagemin": "~1",
+    "grunt-contrib-jshint": "~1",
+    "grunt-contrib-less": "~1",
+    "grunt-contrib-uglify": "~1",
+    "grunt-gitinfo": "~0",
+    "grunt-newer": "~1",
+    "imagemin-mozjpeg": "~5",
+    "imagemin-pngquant": "~4",
+    "imagemin-zopfli": "~4",
+    "jit-grunt": "~0"
+  }
+}
