@@ -102,11 +102,7 @@ module.exports = function(grunt) {
 			all: {
 				files: [{
 					expand: true,
-					src: [
-						'dist/css/common.css',
-						'dist/socialshareprivacy/socialshareprivacy.css',
-						'dist/video-js/video-js.css',
-					],
+					src: ['dist/**/*.css', '!dist/**/*.min.css'],
 					ext: '.min.css',
 					extDot: 'last'
 				}]
