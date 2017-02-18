@@ -30,9 +30,9 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
-				<li><a href="http://hls.asseln.attraktor.org/h264-hls.m3u8">Live Feed</a></li>
+				<li><a href="//hls.asseln.attraktor.org/h264-hls.m3u8">Live Feed</a></li>
 				<li class="active"><a href="/tl/">Time Lapse</a></li>
-				<li><a href="http://videos.asseln.attraktor.org/videos.xml">Podcast</a></li>
+				<li><a href="//videos.asseln.attraktor.org/videos.xml">Podcast</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -58,7 +58,7 @@
 			<div class="player text-center">
 				<div id="player">
 					<p class="vjs-no-js">The player didn't load yet.
-						Download the <a href="http://videos.asseln.attraktor.org/">video files here</a>.
+						Download the <a href="//videos.asseln.attraktor.org/">video files here</a>.
 				</div>
 				<div class="text-left small">
 					<a href="#" id="download_href" aria-label="Download video" title="Download video" rel="nofollow"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
@@ -148,7 +148,7 @@ jQuery(function($) {
 			var current = $();
 
 			function reloadPlaylist(selectedVideo) {
-				$.getJSON("http://videos.asseln.attraktor.org/videos.json", function(videos) {
+				$.getJSON("//videos.asseln.attraktor.org/videos.json", function(videos) {
 					if (!videos.length) {
 						return;
 					}

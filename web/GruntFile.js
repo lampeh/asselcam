@@ -37,22 +37,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		less: {
-			common: {
-				options: {
-					banner: '/*! <%= gitinfo.describe %> */\n',
-					paths: ['bower_components'],
-					report: 'min'
-				},
-
-				files: {
-					'dist/css/common.css': [
-						'src/css/common.less'
-					]
-				}
-			}
-		},
-
 		concat: {
 			js: {
 				options: {
@@ -95,6 +79,22 @@ module.exports = function(grunt) {
 					ext: '.min.js',
 					extDot: 'last'
 				}]
+			}
+		},
+
+		less: {
+			options: {
+				banner: '/*! <%= gitinfo.describe %> */\n',
+				paths: ['bower_components'],
+				report: 'min'
+			},
+
+			all: {
+				files: {
+					'dist/css/common.css': [
+						'src/css/common.less'
+					]
+				}
 			}
 		},
 
