@@ -60,7 +60,8 @@ module.exports = function(grunt) {
 
 					'dist/js/video.js': [
 //						'bower_components/videojs/dist/video-js/video.dev.js',
-						'bower_components/videojs-playlists/dist/videojs-playlists.js'
+						'bower_components/videojs-playlists/dist/videojs-playlists.js',
+						'src/js/misc/video.js'
 					]
 				}
 			}
