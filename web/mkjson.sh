@@ -1,7 +1,7 @@
 #!/bin/sh
 
 BASEDIR="/var/www/videos"
-URL="http://videos.asseln.attraktor.org"
+URL="//videos.asseln.attraktor.org"
 
 sep=""
 echo -n "["
