@@ -2,6 +2,12 @@ server {
 	listen 80;
 	listen [::]:80;
 
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+
+	ssl_certificate /etc/letsencrypt/live/videos.asseln.attraktor.org/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/videos.asseln.attraktor.org/privkey.pem;
+
 	server_name videos.asseln.attraktor.org;
 	server_name videos.origin.asseln.attraktor.org;
 
